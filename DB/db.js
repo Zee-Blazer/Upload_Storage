@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGO_DB); // Online DB connection
+mongoose.connect(process.env.ONLINE_MONGO_DB); // Online DB connection
 
 // Database is connected
 mongoose.connection.on("connected", () => console.log("Database is connected")); 
