@@ -31,6 +31,15 @@ app.use('/profile', require('./Routes/Profile/profile.post'));
 // Post Profile
 app.use('/profile', require('./Routes/Profile/profile.delete'));
 
+// Get Product
+app.use('/product', require("./Routes/Products/product.get"));
+
+// Post Product
+app.use('/product', require('./Routes/Products/product.post'));
+
+// Post Product
+app.use('/product', require('./Routes/Products/product.delete'));
+
 /// End of External Routing ///
 
 
