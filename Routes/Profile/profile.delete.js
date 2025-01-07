@@ -6,15 +6,18 @@ const { Profile } = require('../../Model/profile');
 const router = express.Router();
 
 router.delete("/delete/:id", async (req, res) => {
-    try{
-        const res = await Profile.findByIdAndDelete(req.params.id);
+    try {
+        const deletedProfile = await Profile.findByIdAndDelete(req.params.id);
 
-        if(!res) res.status(400).send({ msg: `Unable to delete file`, data: null })
+        if (!deletedProfile) {
+            return res.status(400).send({ msg: `Unable to delete file`, data: null });
+        }
 
-        res.status(200).send({ msg: `Image Deleted!`, data: res });
-    } catch(err) {
-        res.status(400).send({ msg: "An error occured!", data: null });
+        res.status(200).send({ msg: `Image Deleted!`, data: deletedProfile });
+    } catch (err) {
+        console.log(err);
+        res.status(400).send({ msg: "An error occurred!", data: err });
     }
-})
+});
 
 module.exports = router;
