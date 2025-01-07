@@ -11,8 +11,6 @@ router.get("/specific/:id", async (req, res) => {
 
         if(!image) res.status(400).send({ msg: `Unable to retrieve data successfully!!`, data: null });
 
-        console.log(image)
-
         res.set("Content-Type", image.avatarType);
         res.send(image.avatar)
     } catch(err) {
