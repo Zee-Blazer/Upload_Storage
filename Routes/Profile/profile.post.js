@@ -28,7 +28,7 @@ router.post("/new", media.single("upload"), async (req, res) => {
     }
 })
 
-router.post("/update", media.single("upload", async (req, res) => {
+router.post("/update", media.single("upload"), async (req, res) => {
     try {
         const data = await Profile.findByIdAndUpdate(
             { _id: req.body.id },
@@ -42,6 +42,6 @@ router.post("/update", media.single("upload", async (req, res) => {
     } catch(err) {
         res.status(400).send({ msg: `An error occured!`, data: err });
     }
-}))
+})
 
 module.exports = router;
