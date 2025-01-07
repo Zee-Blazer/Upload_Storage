@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 
+// Using Dotenv
+require('dotenv').config();
+
 const app = express();
 
 // Allow to parse JSON file
@@ -13,7 +16,23 @@ app.use(cors({
    optionSuccessStatus:200,
 }));
 
-// app.post()
+// Connect to database 
+require('./DB/db');
+
+
+/// Start of External Routing ///
+
+// Get Profile
+app.use('/profile', require("./Routes/Profile/profile.get"));
+
+// Post Profile
+app.use('/profile', require('./Routes/Profile/profile.post'));
+
+// Post Profile
+app.use('/profile', require('./Routes/Profile/profile.delete'));
+
+/// End of External Routing ///
+
 
 const port = process.env.PORT || 3004;
 
