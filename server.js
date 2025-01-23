@@ -10,11 +10,7 @@ const app = express();
 app.use(express.json());
 
 // Using Cors
-app.use(cors({
-    origin:'*', 
-   credentials:true,           
-   optionSuccessStatus:200,
-}));
+app.use(cors());
 
 // Connect to database 
 require('./DB/db');
