@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const compression = require('compression');
 
 // Using Dotenv
 require('dotenv').config();
@@ -7,7 +8,9 @@ require('dotenv').config();
 const app = express();
 
 // Allow to parse JSON file
-app.use(express.json());
+app.use(express.json({ limit: "20kb" }));
+
+app.use(compression()); // Compress the load time speed
 
 // Using Cors
 app.use(cors());
